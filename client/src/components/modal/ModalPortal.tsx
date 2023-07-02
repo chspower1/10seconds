@@ -1,17 +1,10 @@
 import { createPortal } from "react-dom";
 import Overlay from "../layout/Overlay";
+import RetryModal from "./RetryModal";
+import ModalContainer from "./ModalContainer";
 
-interface ModalPortalProps {
-  children: React.ReactNode;
-}
-
-const ModalPortal = ({ children }: ModalPortalProps) => {
-  return createPortal(
-    <>
-      {children}
-      <Overlay />
-    </>,
-    document.getElementById("modal-root")!
-  );
+const ModalPortal = () => {
+  const Modal = <>{<RetryModal />}</>;
+  return createPortal(Modal, document.getElementById("modal-root")!);
 };
 export default ModalPortal;
