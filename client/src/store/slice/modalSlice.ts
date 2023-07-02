@@ -13,13 +13,16 @@ export const modalSlice = createSlice({
   name: "modalState",
   initialState,
   reducers: {
-
-
-    
+    openRetry: (state) => {
+      state.openRetryModal = true;
+    },
+    closeRetry: (state) => {
+      state.openRetryModal = false;
+    },
   },
 });
 
-export const {} = modalSlice.actions;
+export const { openRetry, closeRetry } = modalSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectmodal = (state: RootState) => state.modal;
