@@ -6,6 +6,8 @@ import {
   startAndStopCount,
 } from "../store/slice/countSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { openRetry } from "../store/slice/modalSlice";
+import RetryModal from "../components/modal/RetryModal";
 
 const Challenge = () => {
   const { value, isStart } = useAppSelector(selectCount);
@@ -18,6 +20,7 @@ const Challenge = () => {
         dispatch(incrementByAmount(0.01));
       }, 10);
       return () => {
+        dispatch(openRetry());
         clearInterval(timer);
       };
     }
