@@ -2,12 +2,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 interface CountState {
-  value: number;
+  min: number;
+  max: number;
+  currentValue: number;
+  targetValue: number;
   isStart: boolean;
 }
 
 const initialState: CountState = {
-  value: 0,
+  min: 3,
+  max: 6,
+  currentValue: 0,
+  targetValue: 10,
   isStart: false,
 };
 
@@ -16,18 +22,20 @@ export const countSlice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1;
+      state.currentValue += 1;
     },
     decrement: (state) => {
-      state.value -= 1;
+      state.currentValue -= 1;
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+      state.currentValue += action.payload;
     },
     reset: (state) => {
-      state.value = 0;
+      state.currentValue = 0;
     },
     startAndStopCount: (state) => {
+      if (!state.isStart)
+        state.targetValue = +(Math.random() * (state.max - state.min + 1) + state.min).toFixed(2);
       state.isStart = !state.isStart;
     },
   },
@@ -39,4 +47,4 @@ export const { increment, decrement, incrementByAmount, startAndStopCount, reset
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.count;
 
-export default countSlice.reducer;
+export const countReducer = countSlice.reducer;
