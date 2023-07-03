@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import Overlay from "./Overlay";
+import Wrapper from "./Wrapper";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,12 +9,12 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <>
+    <Wrapper>
       <Header />
       <div>{children}</div>
 
       <Footer />
-    </>
+    </Wrapper>
   );
 };
 export default Layout;
