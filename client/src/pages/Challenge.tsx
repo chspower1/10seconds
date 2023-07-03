@@ -10,7 +10,7 @@ import { openRetry } from "../store/slice/modalSlice";
 import RetryModal from "../components/modal/RetryModal";
 
 const Challenge = () => {
-  const { value, isStart } = useAppSelector(selectCount);
+  const { targetValue, currentValue, isStart } = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -26,10 +26,20 @@ const Challenge = () => {
     }
   }, [isStart]);
   return (
-    <>
-      <div>{value.toFixed(2)}</div>
-      <button onClick={() => dispatch(startAndStopCount())}>{isStart ? "정지" : "시작"}</button>
-    </>
+    <div className="flex flex-col justify-center items-center">
+      <div className="text-center text-white text-[150px] font-black">
+        {currentValue.toFixed(2)}
+      </div>
+      <div className="text-center text-white text-[150px] font-black">{targetValue}</div>
+      <button
+        className="w-[200px] h-20 bg-rose-700 rounded"
+        onClick={() => dispatch(startAndStopCount())}
+      >
+        <span className="text-center text-white text-[50px] font-black">
+          {isStart ? "정지" : "시작"}
+        </span>
+      </button>
+    </div>
   );
 };
 

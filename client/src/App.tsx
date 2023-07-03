@@ -10,14 +10,14 @@ import RetryModal from "./components/modal/RetryModal";
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <ModalPortal />
-        <HashRouter>
+      <HashRouter>
+        <Layout>
+          <ModalPortal />
           <Routes>
             <Route path="/" element={<Challenge />} />
           </Routes>
-        </HashRouter>
-      </Layout>
+        </Layout>
+      </HashRouter>
     </div>
   );
 }

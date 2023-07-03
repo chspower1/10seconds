@@ -27,4 +27,4 @@ export const { openRetry, closeRetry } = modalSlice.actions;
 // Other code such as selectors can use the imported `RootState` type
 export const selectmodal = (state: RootState) => state.modal;
 
-export default modalSlice.reducer;
+export const modalReducer = modalSlice.reducer;
