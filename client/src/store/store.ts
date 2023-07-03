@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import countReducer from "./slice/countSlice";
-import modalReducer from "./slice/modalSlice";
+import { countReducer } from "./slice/countSlice";
+import { modalReducer } from "./slice/modalSlice";
+import { currentMenuReducer } from "./slice/currentMenuSlice";
 
 const store = configureStore({
   reducer: {
     count: countReducer,
     modal: modalReducer,
+    currentMenu: currentMenuReducer,
   },
 });
 
